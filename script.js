@@ -183,3 +183,83 @@
 // }
 // console.log(arr);
 // let z = arr.filter(arr => arr < )
+
+function anun() {
+    for (let i = 0; i < 10; i++) {
+        let elem = document.createElement('div');
+        elem.classList.add('lines');
+        elem.style.top = i * 70 + "px";
+        document.querySelector('#janapar').appendChild(elem);
+    }
+}
+anun()
+function up() {
+    let a = document.querySelectorAll('.lines')
+    // console.log(a);
+    for (let i = 0; i < a.length; i++) {
+        let x = parseInt(a[i].style.top) - 20
+        a[i].style.top = x + 'px'
+        // console.log(a[i].style.top,x);
+    }
+}
+function down() {
+    let a = document.querySelectorAll('.lines')
+    // console.log(a);
+    for (let i = 0; i < a.length; i++) {
+        let x = parseInt(a[i].style.top) + 20
+        a[i].style.top = x + 'px'
+        // console.log(a[i].style.top,x);
+    }
+}
+function upDown() {
+    up();
+    setTimeout(down, 100)
+}
+setInterval(upDown, 160)
+let avto1 = document.getElementById('avto1');
+let a = 0;
+function avto() {
+    // a += 10;
+    // avto1.style.top = a + 'px';
+    // // console.log(avto1.style.top);
+    // if (a >= 550) {
+    //     a = -10
+    // }
+}
+setInterval(avto, 500);
+document.body.onkeydown = move;
+let b = 0, c = 0
+let avto2 = document.getElementById('avto2')
+function move(prest) {
+    if (prest.keyCode == 37) {
+        b += 10
+        if (b >= 480) {
+            b = 480
+        }
+        avto2.style.right = b + 'px'
+    } else if (prest.keyCode == 38) {
+        c += 10
+        if (c >= 480) {
+            c = 480
+        }
+        avto2.style.bottom = c + 'px'
+    } else if (prest.keyCode == 39) {
+        b -= 10
+        if (b <= 0) {
+            b = 0
+        }
+        avto2.style.right = b + 'px'
+    } else if (prest.keyCode == 40) {
+        c -= 10
+        if (c <= 0) {
+            c = 0
+        }
+        avto2.style.bottom = c + 'px'
+    }
+    console.log(avto2.style.right + 'avto2', avto1.style.left + 'avto1',
+        avto2.style.bottom + 'avto2', avto1.style.top + 'avto1');
+    if (Math.abs(avto2.style.right) - Math.abs(avto1.style.left) == 0 &&
+        Math.abs(avto2.style.bottom) - Math.abs(avto1.style.top) == 0) {
+        console.log("dagh");
+    }
+}
